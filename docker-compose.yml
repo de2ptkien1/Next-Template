@@ -1,0 +1,39 @@
+version: '3.0'
+
+networks:
+  simple_template:
+    driver: bridge
+
+services:
+  # APPLICATION
+  app:
+    container_name: application_container_name
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run dev
+    ports:
+      - ${APP_PORT}:3000
+    volumes:
+      - ./:/app
+      - /app/node_modules/
+      # - /app/.next
+      # - ./libs/uploads/:/app/libs/uploads/  # Mount upload images into container
+    depends_on:
+      - mariadb
+    networks:
+      - simple_template
+  # DATABASE (MARIA DB)
+  mariadb:
+    container_name: database_container_name
+    image: mariadb:${MARIA_DB_VERSION}
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - ./docker-volumes-data/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_DATABASE=${DB_DATABASE}
+    networks:
+      - simple_template
