@@ -43,3 +43,6 @@ yarn.lock
 
 #volumn-db
 /docker-volumes-data
+
+#jest-snapshot
+/__tests__/__snapshots__
