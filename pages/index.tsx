@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import useTrans from "@/hooks/useTrans"
+import UploadIcon from "@/assets/icons/upload.svg"
 
 export default function Home() {
   const trans = useTrans()
@@ -17,7 +18,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">{trans.title}!</a>
         </h1>
-
+        <p>This is Icon ......................... <UploadIcon/> </p>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
