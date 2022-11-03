@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
+import useTrans from "@/hooks/useTrans"
 
 export default function Home() {
+  const trans = useTrans()
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +15,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">{trans.title}!</a>
         </h1>
 
         <p className={styles.description}>
